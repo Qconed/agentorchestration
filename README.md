@@ -7,18 +7,25 @@ create the virtual environment using venv (sytem dependencies-free)
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate # activate the environment (windows: .venv\Scripts\activate)
-pip install <package> # install package
-
-deactivate # deactivate the environment
-pip freeze > requirements.txt # export the current dependencies to the requirements.txt
 pip install -r requirements.txt
-pip uninstall <package> # uninstall package
 ```
 
-> adding/removing dependency with pip install, then do pip freeze, then commit the requirements.txt file
+Installing packages and adding to the dependencies
+
+```bash
+source .venv/bin/activate # activate the environment (windows: .venv\Scripts\activate)
+pip install <package>
+pip freeze > requirements.txt # export the current dependencies to the requirements.txt
+```
+
+Uninstalling packages and adding to the dependencies
+```bash
+source .venv/bin/activate
+pip uninstall <package>
+pip freeze > requirements.txt
+```
 
 to do a clean remove and install of dependencies:
-
 ```bash
 # Remove everything and start over
 pip uninstall -y -r <(pip freeze)

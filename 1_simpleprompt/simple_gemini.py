@@ -1,4 +1,5 @@
 import os # for system interactions
+import sys
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv, find_dotenv # to manage env variables
 
@@ -7,6 +8,10 @@ load_dotenv(find_dotenv()) # search and load env file upwards in file tree, from
 # Grab API Key ( as named in .env)
 api_key = os.environ["GEMINI_API"]
 
+if not api_key:
+    print("api key not found")
+    sys.exit(1)
+
 # Initialize the model
 # Use "gemini-2.0-flash" for speed or "gemini-1.5-pro" for complex reasoning
 llm = ChatGoogleGenerativeAI(
@@ -14,6 +19,7 @@ llm = ChatGoogleGenerativeAI(
     google_api_key=api_key,
     temperature=0.7
 )
+
 print("asking question...")
 response = llm.invoke("What are the three most important concepts in functional programming?")
 print(response.content)
