@@ -1,5 +1,4 @@
 import os
-import pathlib
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -7,19 +6,6 @@ from langchain_core.messages import HumanMessage, SystemMessage
 load_dotenv()
 
 api_key = os.getenv("OPENROUTER_API_KEY")
-
-if not api_key:
-    # Check parent directory
-    env_path = pathlib.Path(__file__).parent.parent / '.env'
-    if env_path.exists():
-        load_dotenv(dotenv_path=env_path)
-        api_key = os.getenv("OPENROUTER_API_KEY")
-
-if not api_key:
-    print("Error: OPENROUTER_API_KEY not found. Please ensure .env file exists and contains the key.")
-    exit(1)
-
-print(f"API Key found: {api_key[:5]}...{api_key[-5:]}")
 
 # Initialize ChatOpenAI with OpenRouter configuration
 chat = ChatOpenAI(
