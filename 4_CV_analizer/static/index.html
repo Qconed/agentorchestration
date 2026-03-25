@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI CV Analyzer - Générateur de Lettre de Motivation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    <div class="container">
+        <header>
+            <h1>AI CV <span>Analyzer</span></h1>
+            <p>Générez des lettres de motivation percutantes en quelques secondes.</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div class="drop-zones">
+                    <div id="drop-cv" class="drop-zone">
+                        <div class="icon">📄</div>
+                        <p>Déposez votre <strong>CV</strong> ici</p>
+                        <span class="file-info" id="cv-info">Aucun fichier</span>
+                        <input type="file" id="input-cv" accept=".pdf" hidden>
+                    </div>
+                    <div id="drop-offer" class="drop-zone">
+                        <div class="icon">💼</div>
+                        <p>Déposez l'<strong>Offre</strong> ici</p>
+                        <span class="file-info" id="offer-info">Aucun fichier</span>
+                        <input type="file" id="input-offer" accept=".pdf" hidden>
+                    </div>
+                </div>
+                <button id="btn-generate" class="btn-primary" disabled>Générer la lettre</button>
+            </section>
+
+            <section id="preview-section" class="preview-section hidden">
+                <div class="card glass">
+                    <div class="card-header">
+                        <h2>Aperçu de la lettre</h2>
+                        <button id="btn-download" class="btn-secondary">Télécharger PDF</button>
+                    </div>
+                    <div id="letter-preview" class="letter-content" contenteditable="true">
+                        <!-- Le contenu sera injecté ici -->
+                    </div>
+                </div>
+
+                <div class="modification-panel glass">
+                    <h3>Affiner avec l'IA</h3>
+                    <div class="input-group">
+                        <input type="text" id="modify-prompt" placeholder="Ex: 'Rends la lettre plus formelle' ou 'Insiste sur mon expérience en Python'...">
+                        <button id="btn-modify" class="btn-action">Modifier</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="loader" class="loader hidden">
+            <div class="spinner"></div>
+            <p>L'IA analyse vos documents...</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
